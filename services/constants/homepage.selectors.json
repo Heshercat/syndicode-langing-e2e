@@ -1,0 +1,23 @@
+{
+    "header": {
+        "logo": "",
+        "whatWeDoDropdown": "",
+        "projectsLink": "",
+        "aboutUsLink": "",
+        "careerLink": "",
+        "bloglink": "",
+        "searchIcon": "",
+        "contactUsButton": ""
+    },
+    "servicesProvided": {
+        "customSoftwareDevelopment": "", 
+        "webApplicationDevelopment": "", 
+        "mobileAppDevelopment": "", 
+        "progressiveWebDevelopment": "",
+        "dedicatedDevelopmentTeam": "", 
+        "uiDesign": "", 
+        "softwareTesting": "", 
+        "businessAnalysis": ""
+    }
+
+}
