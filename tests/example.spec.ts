@@ -1,17 +1,23 @@
 //example.spec.ts
 import { test, expect, type Page } from '@playwright/test';
-import { HomePage } from '../services/pages/home.page';
-test('Navigate to Google', async ({ page }) => {
-  await page.goto('https://google.com/');
-  const url = await page.url();
-  expect(url).toContain('google');
-});
-test('Search for Playwright', async ({ page }) => {
-  await page.goto('https://google.com/');
-  let exampletest = new HomePage(page);
-  await exampletest.typeSearchText();
-  await exampletest.pressEnter();
-  const text = await exampletest.searchResult();
-  await console.log(text);
-  expect(text).toContain('Playwright: Fast and reliable');
-});
+import HomePage from '../services/pages/home.page';
+import HomePageSteps from '../services/steps/homepage.steps';
+import * as pageTitles from '../services/constants/pageTitles.json';
+
+test.describe('Test example', () => {
+  let homePage: HomePage;
+  let homePageSteps: HomePageSteps;
+
+  test.beforeEach(async ({ page }) => {
+    homePage = new HomePage(page);
+    homePageSteps = new HomePageSteps(page, homePage);
+
+    await page.goto('/', {
+      waitUntil: 'networkidle',
+    });
+  });
+
+  test('Check Home page title', async ({ }) => {
+    await homePageSteps.checkPageTitle(pageTitles.homePageTitle)
+  })
+})
