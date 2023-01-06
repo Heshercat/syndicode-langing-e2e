@@ -1,0 +1,9 @@
+{
+    "contactUsForm": {
+        "nameField": "#wpcf7-f5-o1 > form > span:nth-child(3) > input",
+        "emailField": "",
+        "descriptionField": "",
+        "contactMeButton": "",
+        "privacyPolicyButton": ""
+    }
+}
