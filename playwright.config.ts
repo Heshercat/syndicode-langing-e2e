@@ -14,7 +14,7 @@ const config: PlaywrightTestConfig = {
   use: {
     baseURL: envURLs.prod,
     actionTimeout: 0,
-    headless: false,
+    headless: true,
     viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     video: 'on-first-retry',
