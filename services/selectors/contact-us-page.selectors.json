@@ -1,9 +1,11 @@
 {
     "contactUsForm": {
         "nameField": "#wpcf7-f5-o1 > form > span:nth-child(3) > input",
-        "emailField": "",
-        "descriptionField": "",
-        "contactMeButton": "",
-        "privacyPolicyButton": ""
+        "nameFieldError": "#wpcf7-f5-o1 > form > span:nth-child(3) > span",
+        "emailField": "#wpcf7-f5-o1 > form > span:nth-child(4) > input",
+        "emailFieldError": "#wpcf7-f5-o1 > form > span:nth-child(4) > span",
+        "tellUsMoreField": "#wpcf7-f5-o1 > form > span:nth-child(5) > textarea",
+        "contactMeButton": "xpath=/html/body/main/div/div[2]/div[1]/div[1]/div/div[1]/div/form/button",
+        "privacyPolicyButton": "body > main > div > div.wrapper.contacts__wrapper.contacts__wrapper--content-part > div:nth-child(1) > div.contacts__layout--form-info > div > p > a"
     }
 }
