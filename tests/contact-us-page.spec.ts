@@ -4,6 +4,8 @@ import ContactUsPage from '../services/pages/contact-us.page';
 import ContactUsPageSteps from '../services/steps/contact-us-page.steps';
 import * as pageTitles from '../services/constants/pageTitles.json';
 import * as pageUrls from '../services/constants/urls.json'
+import * as testData from '../services/test-data/random-test-data'
+import * as errors from '../services/constants/fieldValidationErrors.json'
 
 test.describe('Contact us page steps', () => {
   let contactUsPage: ContactUsPage;
@@ -22,8 +24,37 @@ test.describe('Contact us page steps', () => {
     await contactUsPageSteps.checkPageTitle(pageTitles.contactUsPageTitle)
   })
 
-  test('Contact me form state is changed after the request is sent', async ({ }) => {
-    
+  test('There is an error "The field is required." if Name field is empty', async ({ }) => {
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomCorrectStructuredEmail)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkNameFieldError(errors.fieldEmptyError)
+  })
+
+  test('There is an error "The field is required." if Email field is empty', async ({ }) => {
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkEmailFieldError(errors.fieldEmptyError)
+  })
+
+  test('There is an error "The e-mail address entered is invalid." if Email doesnt contain "@"', async ({ }) => {
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomEmailWithoutAmpersand)
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkEmailFieldError(errors.invalidEmailError)
+  })
+
+  test('There is an error "The e-mail address entered is invalid." if Email doesnt contain the part before "@"', async ({ }) => {
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomEmailWithoutPartBeforeAmpersand)
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkEmailFieldError(errors.invalidEmailError)
+  })
+
+  test('There is an error "The e-mail address entered is invalid." if Email doesnt contain the part after "@"', async ({ }) => {
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomEmailWithoutPartAfterAmpersand)
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkEmailFieldError(errors.invalidEmailError)
   })
 
 })
