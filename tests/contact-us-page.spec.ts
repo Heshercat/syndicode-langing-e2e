@@ -1,5 +1,5 @@
 //example.spec.ts
-import { test} from '@playwright/test';
+import { test } from '@playwright/test';
 import ContactUsPage from '../services/pages/contact-us.page';
 import ContactUsPageSteps from '../services/steps/contact-us-page.steps';
 import * as pageTitles from '../services/constants/pageTitles.json';
@@ -56,5 +56,28 @@ test.describe('Contact us page steps', () => {
     await contactUsPageSteps.clickContactMeButton()
     await contactUsPageSteps.checkEmailFieldError(errors.invalidEmailError)
   })
+
+  test('Email validation error disappears after user enters a valid data and clicks Contact Me button', async ({ }) => {
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomCorrectStructuredEmail)
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.checkEmailFieldErrorDisappears()
+  })
+
+  test('Name validation error disappears after user enters a valid data and clicks Contact Me button', async ({ }) => {
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomCorrectStructuredEmail)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomCorrectStructuredEmail)
+    await contactUsPageSteps.checkEmailFieldErrorDisappears()
+  })
+
+  // test ('By clicking Privacy Policy button, Privacy Policy page is opened in the new tab', async ({ }) => {
+  //   await contactUsPageSteps.clickPrivacyPolicyLink()
+  //   // Start waiting for new page before clicking. Note no await.
+
+
+  // })
 
 })
