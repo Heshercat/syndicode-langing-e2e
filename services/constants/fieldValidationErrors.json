@@ -1,4 +1,5 @@
 {  
     "fieldEmptyError": "The field is required.",
-    "invalidEmailError": "The e-mail address entered is invalid."
+    "invalidEmailError": "The e-mail address entered is invalid.",
+    "validationMessage": "One or more fields have an error. Please check and try again."
 }
