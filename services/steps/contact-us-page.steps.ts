@@ -48,6 +48,10 @@ export default class ContactUsPageSteps {
       expect(this.page.locator(selectors.contactUsForm.nameFieldError)).toBeHidden;
    }
 
+   async checkValidationMessageAppears(message: string) {
+      await expect(this.page.locator(selectors.contactUsForm.validationMessage)).toHaveText(message)
+   }
+
    async clickPrivacyPolicyLink() {
       await this.page.locator(selectors.contactUsForm.privacyPolicyLink).click()
    }

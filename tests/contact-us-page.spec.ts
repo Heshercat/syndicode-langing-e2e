@@ -73,6 +73,39 @@ test.describe('Contact us page steps', () => {
     await contactUsPageSteps.checkEmailFieldErrorDisappears()
   })
 
+  test('There is a message under the Contact Me button "One or more fields have an error. Please check and try again." if Email is empty', async ({ }) => {
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkValidationMessageAppears(errors.validationMessage)
+  })
+
+  test('There is a message under the Contact Me button "One or more fields have an error. Please check and try again." if Name is empty', async ({ }) => {
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomCorrectStructuredEmail)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkValidationMessageAppears(errors.validationMessage)
+  })
+
+  test('There is a message under the Contact Me button "One or more fields have an error. Please check and try again." if Email does not contain "@" ', async ({ }) => {
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomEmailWithoutAmpersand)
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkValidationMessageAppears(errors.validationMessage)
+  })
+
+  test('There is a message under the Contact Me button "One or more fields have an error. Please check and try again." if Email does not contain the part before "@" ', async ({ }) => {
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomEmailWithoutPartBeforeAmpersand)
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkValidationMessageAppears(errors.validationMessage)
+  })
+
+  test('There is a message under the Contact Me button "One or more fields have an error. Please check and try again." if Email does not contain the part after "@" ', async ({ }) => {
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomEmailWithoutPartAfterAmpersand)
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkValidationMessageAppears(errors.validationMessage)
+  })
+
   // test ('By clicking Privacy Policy button, Privacy Policy page is opened in the new tab', async ({ }) => {
   //   await contactUsPageSteps.clickPrivacyPolicyLink()
   //   // Start waiting for new page before clicking. Note no await.
