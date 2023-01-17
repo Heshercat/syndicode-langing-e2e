@@ -52,6 +52,10 @@ export default class ContactUsPageSteps {
       await expect(this.page.locator(selectors.contactUsForm.validationMessage)).toHaveText(message)
    }
 
+   async checkSuccessMessageAppears(message: string) {
+      await expect(this.page.locator(selectors.contactUsForm.successContactMesage)).toHaveText(message)
+   }
+
    async clickPrivacyPolicyLink() {
       await this.page.locator(selectors.contactUsForm.privacyPolicyLink).click()
    }

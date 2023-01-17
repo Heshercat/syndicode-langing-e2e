@@ -7,6 +7,7 @@
         "tellUsMoreField": "#wpcf7-f5-o1 > form > span:nth-child(5) > textarea",
         "contactMeButton": "xpath=/html/body/main/div/div[2]/div[1]/div[1]/div/div[1]/div/form/button",
         "privacyPolicyLink": "body > main > div > div.wrapper.contacts__wrapper.contacts__wrapper--content-part > div:nth-child(1) > div.contacts__layout--form-info > div > p > a",
-        "validationMessage": "#wpcf7-f5-o1 > form > div.wpcf7-response-output"
+        "validationMessage": "#wpcf7-f5-o1 > form > div.wpcf7-response-output",
+        "successContactMesage": "body > main > div > div.wrapper.contacts__wrapper.contacts__wrapper--content-part > div:nth-child(1) > div.success-message > div > div.success-message__header"
     }
 }
