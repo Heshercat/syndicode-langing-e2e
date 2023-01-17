@@ -5,7 +5,7 @@ import ContactUsPageSteps from '../services/steps/contact-us-page.steps';
 import * as pageTitles from '../services/constants/pageTitles.json';
 import * as pageUrls from '../services/constants/urls.json'
 import * as testData from '../services/test-data/random-test-data'
-import * as errors from '../services/constants/fieldValidationErrors.json'
+import * as errors from '../services/constants/validationMessages.json'
 
 test.describe('Contact us page steps', () => {
   let contactUsPage: ContactUsPage;
@@ -104,6 +104,13 @@ test.describe('Contact us page steps', () => {
     await contactUsPageSteps.fillNameForContactForm(testData.randomName)
     await contactUsPageSteps.clickContactMeButton()
     await contactUsPageSteps.checkValidationMessageAppears(errors.validationMessage)
+  })
+
+  test ('Success message "Thank you for your message" appears after contact us request is successfully sent', async ({ }) => {
+    await contactUsPageSteps.fillEmailForContactForm(testData.randomCorrectStructuredEmail)
+    await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+    await contactUsPageSteps.clickContactMeButton()
+    await contactUsPageSteps.checkSuccessMessageAppears(errors.successContactMessage)
   })
 
   // test ('By clicking Privacy Policy button, Privacy Policy page is opened in the new tab', async ({ }) => {
