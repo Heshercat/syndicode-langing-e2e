@@ -113,11 +113,9 @@ test.describe('Contact us page steps', () => {
     await contactUsPageSteps.checkSuccessMessageAppears(errors.successContactMessage)
   })
 
-  // test ('By clicking Privacy Policy button, Privacy Policy page is opened in the new tab', async ({ }) => {
-  //   await contactUsPageSteps.clickPrivacyPolicyLink()
-  //   // Start waiting for new page before clicking. Note no await.
-
-
-  // })
+  test ('By clicking Privacy Policy button, Privacy Policy page is opened in the new tab', async ({ }) => {
+    await contactUsPageSteps.clickPrivacyPolicyLink()
+    contactUsPageSteps.checkPrivacyPolicyOpenedInNewTab()
+  })
 
 })

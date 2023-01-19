@@ -1,7 +1,10 @@
 import { expect } from '@playwright/test';
 import { Page } from 'playwright';
+import { chromium } from 'playwright';
 import ContactUsPage from '../pages/contact-us.page';
 import * as selectors from '../selectors/contact-us-page.selectors.json'
+import * as pageTitles from '../constants/pageTitles.json'
+
 
 export default class ContactUsPageSteps {
    constructor(page: Page, contactUsPage: ContactUsPage) {
@@ -58,6 +61,19 @@ export default class ContactUsPageSteps {
 
    async clickPrivacyPolicyLink() {
       await this.page.locator(selectors.contactUsForm.privacyPolicyLink).click()
+   }
+
+   async checkPrivacyPolicyOpenedInNewTab() {
+      const browser = await chromium.launch();
+      const context = await browser.newContext();
+      const page = await context.newPage();
+
+      // Verify that a new tab has been opened
+      const pages = await context.pages();
+      expect(pages.length).toBe(2);
+      // Verify that the new tab is the Privacy Policy page
+      const privacyPolicyPage = pages[1];
+      expect(await privacyPolicyPage.title()).toBe(pageTitles.privacyPolicyPageTitle);
    }
 
 }
