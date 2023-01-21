@@ -15,10 +15,8 @@ function stringGen(lengthMax: number) {
 
 // Random data
 
-export var randomName = stringGen(15)
-export var randomCorrectStructuredEmail = stringGen(15) + "@" + stringGen(5) + "." + stringGen(5)
+export var randomName = stringGen(15)+"qatest"
+export var randomCorrectStructuredEmail = stringGen(15) + "@" + stringGen(5) + "." + stringGen(5)+"qatest"
 export var randomEmailWithoutAmpersand = stringGen(15) + "." + stringGen(5)
 export var randomEmailWithoutPartBeforeAmpersand = "@" + stringGen(5) + "." + stringGen(5)
 export var randomEmailWithoutPartAfterAmpersand = stringGen(15) + "@"
-
-
