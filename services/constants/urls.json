@@ -2,5 +2,6 @@
     "webApplicationDevelopment_page": "/services/web-application-development/",
     "customSoftwareDevelopment_page": "/services/custom-software-development/",
     "contactUs_page": "/contact-us/",
-    "privacyPolicy_page": "/privacy-policy/"
+    "privacyPolicy_page": "/privacy-policy/",
+    "tempMail_service": "https://temp-mail.org/en/"
 }

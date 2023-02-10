@@ -4,16 +4,16 @@ import { chromium } from 'playwright';
 import ContactUsPage from '../pages/contact-us.page';
 import * as selectors from '../selectors/contact-us-page.selectors.json'
 import * as pageTitles from '../constants/pageTitles.json'
+import * as url from '../constants/urls.json'
 
 
 export default class ContactUsPageSteps {
-   constructor(page: Page, contactUsPage: ContactUsPage) {
+   constructor(page: Page) {
       this.page = page;
-      this.contactUsPage = contactUsPage;
    }
 
    private page: Page;
-   private contactUsPage: ContactUsPage;
+
 
    async checkPageTitle(title: string) {
       await expect(this.page).toHaveTitle(title)
@@ -74,6 +74,17 @@ export default class ContactUsPageSteps {
       // Verify that the new tab is the Privacy Policy page
       const privacyPolicyPage = pages[1];
       expect(await privacyPolicyPage.title()).toBe(pageTitles.privacyPolicyPageTitle);
+   }
+
+   async openTempMailServiceInNewTab () {
+      const browser = await chromium.launch();
+      const context = await browser.newContext();
+      const page = await context.newPage();
+
+      const pages = await context.pages();
+      expect(pages.length).toBe(2);
+
+      await page.goto(url.tempMail_service)
    }
 
 }
