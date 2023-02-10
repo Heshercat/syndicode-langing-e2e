@@ -8,12 +8,10 @@ import * as testData from '../services/test-data/random-test-data'
 import * as errors from '../services/constants/validationMessages.json'
 
 test.describe('Contact us page steps', () => {
-  let contactUsPage: ContactUsPage;
   let contactUsPageSteps: ContactUsPageSteps;
 
   test.beforeEach(async ({ page }) => {
-    contactUsPage = new ContactUsPage(page);
-    contactUsPageSteps = new ContactUsPageSteps(page, contactUsPage);
+    contactUsPageSteps = new ContactUsPageSteps(page);
 
     await page.goto(pageUrls.contactUs_page, {
       waitUntil: 'networkidle',
@@ -117,5 +115,12 @@ test.describe('Contact us page steps', () => {
     await contactUsPageSteps.clickPrivacyPolicyLink()
     contactUsPageSteps.checkPrivacyPolicyOpenedInNewTab()
   })
+
+  // test ('Auto-generated email from Syndicode is sent to the entered mail after the Contact me request is sent with empty Tell us more field', async ({ }) => {
+  //   await contactUsPageSteps.openTempMailServiceInNewTab()
+  //   await contactUsPageSteps.fillNameForContactForm(testData.randomName)
+  //   await contactUsPageSteps.clickContactMeButton()
+  // })
+
 
 })
