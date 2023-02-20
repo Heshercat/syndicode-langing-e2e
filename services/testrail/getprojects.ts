@@ -12,10 +12,10 @@ const filters: TestRail.IProjectFilters = {
     is_completed: 0
 }; // Set any filters you needis_completed: 0 here
 
-export const xz = () => testrail.getProjects(filters, (error: Error | null, projects: IProject[]) => {
+testrail.getProjects(filters, (error: Error | null, projects: IProject[]) => {
     if (error) {
-        console.error(error);
+        console.error(error, 'ERROR');
     } else {
-        console.log(projects);
+        console.log(projects, 'Projects');
     }
 });

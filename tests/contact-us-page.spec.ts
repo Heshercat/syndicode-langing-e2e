@@ -1,6 +1,5 @@
 //example.spec.ts
 import { test } from '@playwright/test';
-import ContactUsPage from '../services/pages/contact-us.page';
 import ContactUsPageSteps from '../services/steps/contact-us-page.steps';
 import * as pageTitles from '../services/constants/pageTitles.json';
 import * as pageUrls from '../services/constants/urls.json'
@@ -11,7 +10,6 @@ test.describe('Contact us page steps', () => {
   let contactUsPageSteps: ContactUsPageSteps;
 
   test.beforeEach(async ({ page }) => {
-    contactUsPageSteps = new ContactUsPageSteps(page);
 
     await page.goto(pageUrls.contactUs_page, {
       waitUntil: 'networkidle',
