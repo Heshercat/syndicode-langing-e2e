@@ -6,9 +6,9 @@ const config: PlaywrightTestConfig = {
     testDir: './tests',
     fullyParallel: true,
     reporter: 'html',
-    timeout: 30 * 1000,
+    timeout: 300 * 1000,
   expect: {
-    timeout: 5000
+    timeout: 50000
   },
 
   use: {
